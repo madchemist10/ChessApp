@@ -4,7 +4,7 @@ package app.piece;
  * This class represents all possible move sets
  * that may be used for a single chess piece.
  */
-public enum Move {
+public enum Moves {
     FORWARD,
     BACKWARD,
     LEFT,

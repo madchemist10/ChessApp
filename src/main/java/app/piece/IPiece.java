@@ -1,6 +1,7 @@
 package app.piece;
 
 import app.Color;
+import app.board.Board;
 import app.board.Square;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public interface IPiece {
      * this chess piece.
      * @return List of moves.
      */
-    List<Move> getPossibleMoves();
+    List<ValidMove> getValidMoves();
 
     /**
      * Retrieve the current square that this
@@ -40,4 +41,11 @@ public interface IPiece {
      * @param currentPosition of the piece.
      */
     void setCurrentPosition(Square currentPosition);
+
+    /**
+     * Assign the board that this piece belongs
+     * to. Used to determine valid move sets.
+     * @param board that this piece is a member of.
+     */
+    void setBoard(Board board);
 }

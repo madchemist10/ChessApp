@@ -13,17 +13,17 @@ public class MoveSets {
      * This is the valid move set available to all
      * pieces of type {@link Bishop}.
      */
-    public static final List<Move> BISHOP = new ArrayList<>();
+    public static final List<Moves> BISHOP = new ArrayList<>();
     static{
-        BISHOP.add(Move.DIAGONAL_FORWARD_LEFT);
-        BISHOP.add(Move.DIAGONAL_FORWARD_RIGHT);
-        BISHOP.add(Move.DIAGONAL_BACKWARD_LEFT);
-        BISHOP.add(Move.DIAGONAL_BACKWARD_RIGHT);
+        BISHOP.add(Moves.DIAGONAL_FORWARD_LEFT);
+        BISHOP.add(Moves.DIAGONAL_FORWARD_RIGHT);
+        BISHOP.add(Moves.DIAGONAL_BACKWARD_LEFT);
+        BISHOP.add(Moves.DIAGONAL_BACKWARD_RIGHT);
     }
-    public static final List<Move> KING = new ArrayList<>();
-    public static final List<Move> KNIGHT = new ArrayList<>();
-    public static final List<Move> PAWN = new ArrayList<>();
-    public static final List<Move> QUEEN = new ArrayList<>();
-    public static final List<Move> ROOK = new ArrayList<>();
+    public static final List<Moves> KING = new ArrayList<>();
+    public static final List<Moves> KNIGHT = new ArrayList<>();
+    public static final List<Moves> PAWN = new ArrayList<>();
+    public static final List<Moves> QUEEN = new ArrayList<>();
+    public static final List<Moves> ROOK = new ArrayList<>();
 
 }

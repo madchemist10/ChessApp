@@ -1,7 +1,6 @@
 package app.piece;
 
 import app.Color;
-import app.board.Square;
 
 import java.util.List;
 
@@ -12,34 +11,22 @@ import java.util.List;
  * the bishop remains on the same colored square
  * that it currently resides on.
  */
-public class Bishop implements IPiece {
+public class Bishop extends APiece {
 
-    private final Color color;
-
-    private Square currentSquare;
-
+    /**
+     * Create a new bishop with the specified color.
+     * @param color of this bishop
+     */
     public Bishop(Color color){
-        this.color = color;
+        super(color);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Color getColor() {
-        return color;
-    }
-
-    @Override
-    public List<Move> getPossibleMoves() {
-        List<Move> availableMoves = MoveSets.BISHOP;
-        return null;
-    }
-
-    @Override
-    public Square getCurrentPosition() {
-        return currentSquare;
-    }
-
-    @Override
-    public void setCurrentPosition(Square currentPosition) {
-        this.currentSquare = currentPosition;
+    public List<ValidMove> getValidMoves() {
+        List<Moves> availableMoves = MoveSets.BISHOP;
+        return MoveValidator.getValidMoves(availableMoves, currentSquare, board);
     }
 }

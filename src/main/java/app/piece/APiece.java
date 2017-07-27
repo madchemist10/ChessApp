@@ -4,6 +4,8 @@ import app.Color;
 import app.board.Board;
 import app.board.Square;
 
+import java.util.List;
+
 /**
  * The Bishop is a diagonal moving pieces
  * that is able to move to any other square within
@@ -18,6 +20,8 @@ abstract class APiece implements IPiece {
     Square currentSquare;
 
     Board board;
+
+    List<ValidMove> validMoves = null;
 
     APiece(Color color){
         this.color = color;
@@ -45,6 +49,7 @@ abstract class APiece implements IPiece {
     @Override
     public void setCurrentPosition(Square currentPosition) {
         this.currentSquare = currentPosition;
+        validMoves = getValidMoves();
     }
 
     /**
@@ -54,4 +59,11 @@ abstract class APiece implements IPiece {
     public void setBoard(Board board) {
         this.board = board;
     }
+
+    /**
+     * Get the move set for the implemented piece.
+     * Used in determining next valid move sets.
+     * @return the move set for this piece.
+     */
+    abstract List<Moves> getMoveSet();
 }

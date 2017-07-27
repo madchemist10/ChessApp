@@ -8,4 +8,18 @@ package app.board;
  * another piece may take its location.
  */
 public class Square {
+
+    private boolean isOccupied = false;
+
+    public boolean isOccupied(){
+        return isOccupied;
+    }
+
+    public int getRow(){
+        return 0;
+    }
+
+    public int getCol(){
+        return 0;
+    }
 }

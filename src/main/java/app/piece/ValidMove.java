@@ -13,10 +13,10 @@ public class ValidMove {
         this.magnitude = magnitude;
     }
 
-    private Moves getMove(){
+    public Moves getMove(){
         return move;
     }
-    private int getMagnitude(){
+    public int getMagnitude(){
         return magnitude;
     }
 }

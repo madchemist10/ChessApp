@@ -93,6 +93,8 @@ public class MoveSets {
         ROOK.add(Moves.BACKWARD);
         ROOK.add(Moves.LEFT);
         ROOK.add(Moves.RIGHT);
+        ROOK.add(Moves.CASTLE_LEFT);
+        ROOK.add(Moves.CASTLE_RIGHT);
     }
 
 }

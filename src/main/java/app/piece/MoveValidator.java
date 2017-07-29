@@ -13,14 +13,21 @@ import java.util.List;
 public class MoveValidator {
     private static final int MAX_MAG = 8;
 
-    public static List<ValidMove> getValidMoves(List<Moves> moveSet, Square curr, Board board){
+    /**
+     * Routine to determine the list of valid moves,
+     * for the given move set and the current position.
+     * @param piece piece that we are determining valid moves for.
+     * @param board that maintains all piece placements.
+     * @return list of valid moves for the current piece.
+     */
+    public static List<ValidMove> getValidMoves(IPiece piece, Board board){
         List<ValidMove> validMoves = new ArrayList<>();
         ValidMove validMove;
         Square next;
-        for(Moves move: moveSet){
+        for(Moves move: piece.getMoveSet()){
             for(int i = 0; i < MAX_MAG; i++ ) {
                 validMove = new ValidMove(move, i);
-                next = determineNextSquare(curr, validMove, board);
+                next = determineNextSquare(piece.getCurrentPosition(), validMove, board);
                 if(next == null || next.isOccupied()){
                     break;
                 }
@@ -31,8 +38,18 @@ public class MoveValidator {
         return validMoves;
     }
 
+    /**
+     * This routine is responsible for determining
+     * what the next square is that should be advanced to
+     * via the valid move that has been made.
+     * @param curr the square from which the move may be made from
+     * @param validMove the move that wants to be made
+     * @param board that maintains all piece placements
+     * @return the square for where the valid move points.
+     */
     public static Square determineNextSquare(Square curr, ValidMove validMove, Board board){
         Moves move = validMove.getMove();
+        int magnitude = validMove.getMagnitude();
         int row = curr.getRow();
         int col = curr.getCol();
         /*
@@ -49,36 +66,36 @@ public class MoveValidator {
              * horizontal based moves.
              */
             case FORWARD:
-                row++;
+                row+=magnitude;
                 break;
             case BACKWARD:
-                row--;
+                row-=magnitude;
                 break;
             case LEFT:
-                col--;
+                col-=magnitude;
                 break;
             case RIGHT:
-                col++;
+                col+=magnitude;
                 break;
             /*
              * Handle all diagonal based
              * moves.
              */
             case DIAGONAL_FORWARD_LEFT:
-                row++;
-                col--;
+                row+=magnitude;
+                col-=magnitude;
                 break;
             case DIAGONAL_FORWARD_RIGHT:
-                row++;
-                col++;
+                row+=magnitude;
+                col+=magnitude;
                 break;
             case DIAGONAL_BACKWARD_LEFT:
-                row--;
-                col--;
+                row-=magnitude;
+                col-=magnitude;
                 break;
             case DIAGONAL_BACKWARD_RIGHT:
-                row--;
-                col++;
+                row-=magnitude;
+                col+=magnitude;
                 break;
             /*
              * Handle all Knight based

@@ -17,11 +17,11 @@ abstract class APiece implements IPiece {
 
     private final Color color;
 
-    Square currentSquare;
+    private Square currentSquare;
 
-    Board board;
+    private Board board;
 
-    List<ValidMove> validMoves = null;
+    private List<ValidMove> validMoves = null;
 
     APiece(Color color){
         this.color = color;
@@ -40,7 +40,7 @@ abstract class APiece implements IPiece {
      */
     @Override
     public List<ValidMove> getValidMoves() {
-        return MoveValidator.getValidMoves(getMoveSet(), currentSquare, board);
+        return validMoves;
     }
 
     /**
@@ -52,12 +52,14 @@ abstract class APiece implements IPiece {
     }
 
     /**
+     * Set the current set of valid moves on
+     * every current position change.
      * {@inheritDoc}
      */
     @Override
     public void setCurrentPosition(Square currentPosition) {
         this.currentSquare = currentPosition;
-        validMoves = getValidMoves();
+        validMoves = MoveValidator.getValidMoves(this, board);
     }
 
     /**
@@ -67,11 +69,4 @@ abstract class APiece implements IPiece {
     public void setBoard(Board board) {
         this.board = board;
     }
-
-    /**
-     * Get the move set for the implemented piece.
-     * Used in determining next valid move sets.
-     * @return the move set for this piece.
-     */
-    abstract List<Moves> getMoveSet();
 }

@@ -21,18 +21,12 @@ public class Bishop extends APiece {
         super(color);
     }
 
-    @Override
-    List<Moves> getMoveSet() {
-        return MoveSets.BISHOP;
-    }
-
     /**
      * {@inheritDoc}
      */
     @Override
-    public List<ValidMove> getValidMoves() {
-        return MoveValidator.getValidMoves(getMoveSet(), currentSquare, board);
+    List<Moves> getMoveSet() {
+        return MoveSets.BISHOP;
     }
-
 
 }

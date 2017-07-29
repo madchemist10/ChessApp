@@ -39,6 +39,14 @@ abstract class APiece implements IPiece {
      * {@inheritDoc}
      */
     @Override
+    public List<ValidMove> getValidMoves() {
+        return MoveValidator.getValidMoves(getMoveSet(), currentSquare, board);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public Square getCurrentPosition() {
         return currentSquare;
     }

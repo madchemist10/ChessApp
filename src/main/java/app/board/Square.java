@@ -28,4 +28,8 @@ public class Square {
     public IPiece getPiece(){
         return null;
     }
+
+    public boolean equals(Square square){
+        return getRow() == square.getRow() && getCol() == square.getCol();
+    }
 }

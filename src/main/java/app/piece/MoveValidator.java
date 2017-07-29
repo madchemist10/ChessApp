@@ -147,4 +147,22 @@ public class MoveValidator {
         return board.getSquare(row, col);
     }
 
+    /**
+     * Retrieve the move that is valid for the two
+     * squares that are linked via the desired move.
+     * @param dest square of where the player wants to put the piece.
+     * @param piece that is trying to be moved.
+     * @param board that maintains all pieces.
+     * @return the valid move for the move to the destination square
+     * or null.
+     */
+    public static ValidMove getValidMove(Square dest, IPiece piece, Board board){
+        for(ValidMove move: piece.getValidMoves()){
+            if(dest.equals(determineNextSquare(piece.getCurrentPosition(), move, board))){
+                return move;
+            }
+        }
+        return null;
+    }
+
 }

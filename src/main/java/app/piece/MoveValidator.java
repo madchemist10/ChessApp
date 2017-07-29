@@ -123,7 +123,7 @@ public class MoveValidator {
              */
             case CASTLE_RIGHT:
             case CASTLE_LEFT:
-                return board.canCastle(curr);
+                return board.canCastle(curr, move);
             case EN_PASSANT:
                 return board.canEnPassant(curr);
         }

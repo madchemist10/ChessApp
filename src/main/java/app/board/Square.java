@@ -1,5 +1,7 @@
 package app.board;
 
+import app.piece.IPiece;
+
 /**
  * This represents a singular square that is
  * part of the master board. Each square understands
@@ -21,5 +23,9 @@ public class Square {
 
     public int getCol(){
         return 0;
+    }
+
+    public IPiece getPiece(){
+        return null;
     }
 }

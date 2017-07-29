@@ -44,6 +44,10 @@ public class MoveValidator {
          * L = double second param
          */
         switch(move){
+            /*
+             * Handle normal vertical and
+             * horizontal based moves.
+             */
             case FORWARD:
                 row++;
                 break;
@@ -56,6 +60,10 @@ public class MoveValidator {
             case RIGHT:
                 col++;
                 break;
+            /*
+             * Handle all diagonal based
+             * moves.
+             */
             case DIAGONAL_FORWARD_LEFT:
                 row++;
                 col--;
@@ -72,6 +80,10 @@ public class MoveValidator {
                 row--;
                 col++;
                 break;
+            /*
+             * Handle all Knight based
+             * moves.
+             */
             case L_FORWARD_LEFT:
                 row++;
                 col-=2;
@@ -104,6 +116,16 @@ public class MoveValidator {
                 col--;
                 row-=2;
                 break;
+            /*
+             * Handle the special move cases that
+             * can have multiple options, depending on
+             * current set up of the board.
+             */
+            case CASTLE_RIGHT:
+            case CASTLE_LEFT:
+                return board.canCastle(curr);
+            case EN_PASSANT:
+                return board.canEnPassant(curr);
         }
         return board.getSquare(row, col);
     }

@@ -18,4 +18,28 @@ public class Board {
     public Square getSquare(int row, int col){
         return null;
     }
+
+    /**
+     * Perform a look up and determine if the square
+     * exists where the current square may be castled
+     * from.
+     * @param curr square that should be checked.
+     * @return the square of where the piece on this square
+     * may move too.
+     */
+    public Square canCastle(Square curr){
+        return null;
+    }
+
+    /**
+     * Perform a look up and determine if the square
+     * exists where the current square may perform
+     * an en passant.
+     * @param curr square that should be checked.
+     * @return the square of where the peice will
+     * be after the en passant.
+     */
+    public Square canEnPassant(Square curr){
+        return null;
+    }
 }

@@ -1,5 +1,9 @@
 package app.piece;
 
+import app.Color;
+
+import java.util.List;
+
 /**
  * The Knight piece has the most special
  * move set of all the pieces. A Knight must move
@@ -9,5 +13,21 @@ package app.piece;
  * one square horizontal then two vertical or any combination
  * as long as three squares are traversed in this manner.
  */
-public class Knight {
+public class Knight extends APiece {
+
+    /**
+     * Create a new knight with the specified color.
+     * @param color of this knight
+     */
+    public Knight(Color color){
+        super(color);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    List<Moves> getMoveSet() {
+        return MoveSets.KNIGHT;
+    }
 }

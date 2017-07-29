@@ -13,8 +13,8 @@ import java.util.List;
 public class King extends APiece{
 
     /**
-     * Create a new bishop with the specified color.
-     * @param color of this bishop
+     * Create a new king with the specified color.
+     * @param color of this king
      */
     public King(Color color){
         super(color);

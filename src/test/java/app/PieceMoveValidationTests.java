@@ -103,9 +103,28 @@ public class PieceMoveValidationTests {
         }
     }
 
+    /**
+     * Validate that each and only each move
+     * that should be a member of the queen's
+     * move set are contained within that set.
+     */
     @Test
     public void queenMoveSetValidation(){
-
+        IPiece queen = new Queen(Color.WHITE);
+        List<Moves> moveSet = queen.getMoveSet();
+        List<Moves> QUEEN = new LinkedList<>();
+        QUEEN.add(Moves.FORWARD);
+        QUEEN.add(Moves.BACKWARD);
+        QUEEN.add(Moves.LEFT);
+        QUEEN.add(Moves.RIGHT);
+        QUEEN.add(Moves.DIAGONAL_FORWARD_LEFT);
+        QUEEN.add(Moves.DIAGONAL_FORWARD_RIGHT);
+        QUEEN.add(Moves.DIAGONAL_BACKWARD_LEFT);
+        QUEEN.add(Moves.DIAGONAL_BACKWARD_RIGHT);
+        Assert.assertEquals(QUEEN.size(), moveSet.size());
+        for(Moves move: QUEEN){
+            Assert.assertTrue(moveSet.contains(move));
+        }
     }
 
     @Test

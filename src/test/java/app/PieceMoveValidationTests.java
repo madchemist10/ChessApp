@@ -127,8 +127,25 @@ public class PieceMoveValidationTests {
         }
     }
 
+    /**
+     * Validate that each and only each move
+     * that should be a member of the rook's
+     * move set are contained within that set.
+     */
     @Test
     public void rookMoveSetValidation(){
-
+        IPiece rook = new Rook(Color.WHITE);
+        List<Moves> moveSet = rook.getMoveSet();
+        List<Moves> ROOK = new LinkedList<>();
+        ROOK.add(Moves.FORWARD);
+        ROOK.add(Moves.BACKWARD);
+        ROOK.add(Moves.LEFT);
+        ROOK.add(Moves.RIGHT);
+        ROOK.add(Moves.CASTLE_LEFT);
+        ROOK.add(Moves.CASTLE_RIGHT);
+        Assert.assertEquals(ROOK.size(), moveSet.size());
+        for(Moves move: ROOK){
+            Assert.assertTrue(moveSet.contains(move));
+        }
     }
 }

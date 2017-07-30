@@ -1,5 +1,7 @@
 package app.piece;
 
+import app.board.Board;
+import app.board.Square;
 import org.junit.Assert;
 
 import java.util.List;
@@ -28,5 +30,25 @@ public class PieceTests{
             }
         }
         Assert.assertTrue(moveContained);
+    }
+
+    /**
+     * Helper routine to validate a single
+     * forward move for a pawn.
+     * @param currRow that the pawn resides on
+     * @param currCol that the pawn resides on
+     * @param destRow of the square immediate forward
+     * @param destCol of the square immediate forward
+     */
+    static void validatePawnForwardMove(int currRow, int currCol, int destRow, int destCol, int magnitude){
+        Board board = new Board();
+        Square dest = new Square(destRow, destCol);
+        Square curr = board.getSquare(currRow, currCol);
+        IPiece piece = curr.getPiece();
+        Assert.assertTrue(piece instanceof Pawn);
+        ValidMove validMove = new ValidMove(Moves.FORWARD, magnitude);
+        PieceTests.validatePieceMove(piece, validMove);
+        Square next = MoveValidator.determineNextSquare(curr,validMove,board);
+        Assert.assertTrue(dest.equals(next));
     }
 }

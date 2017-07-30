@@ -1,6 +1,8 @@
 package app.piece;
 
 import app.Color;
+import app.board.Board;
+import app.board.Square;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -146,6 +148,49 @@ public class PieceMoveValidationTests {
         Assert.assertEquals(ROOK.size(), moveSet.size());
         for(Moves move: ROOK){
             Assert.assertTrue(moveSet.contains(move));
+        }
+    }
+
+    /**
+     * This test validates that on a fresh game start,
+     * that no bishop is able to move.
+     */
+    @Test
+    public void bishopValidMovesValidation_FreshStart(){
+        //generate default board
+        Board board = new Board();
+        List<Square> bishopSquares = new LinkedList<>();
+        //get each bishop piece from the board
+        Square whiteBishopLeft = board.getSquare(0,2);
+        Square whiteBishopRight = board.getSquare(0,5);
+        Square blackBishopLeft = board.getSquare(7,2);
+        Square blackBishopRight = board.getSquare(7,5);
+        //validate all bishops squares are not null
+        Assert.assertNotNull(whiteBishopLeft);
+        Assert.assertNotNull(whiteBishopRight);
+        Assert.assertNotNull(blackBishopLeft);
+        Assert.assertNotNull(blackBishopRight);
+        //validate all bishop squares are occupied
+        Assert.assertTrue(whiteBishopLeft.isOccupied());
+        Assert.assertTrue(whiteBishopLeft.isOccupied());
+        Assert.assertTrue(whiteBishopLeft.isOccupied());
+        Assert.assertTrue(whiteBishopLeft.isOccupied());
+        //add each bishop square to list
+        bishopSquares.add(whiteBishopLeft);
+        bishopSquares.add(whiteBishopRight);
+        bishopSquares.add(blackBishopLeft);
+        bishopSquares.add(blackBishopRight);
+        /*
+         * iterate over each bishop
+         * square and ensure that the bishop
+         * contained on the square has no valid moves.
+         */
+        for(Square curr: bishopSquares){
+            IPiece bishop = curr.getPiece();
+            Assert.assertNotNull(bishop);
+            List<ValidMove> validMoves = bishop.getValidMoves();
+            Assert.assertNotNull(validMoves);
+            Assert.assertEquals(0, validMoves.size());
         }
     }
 }

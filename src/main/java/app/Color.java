@@ -6,4 +6,6 @@ package app;
  * of the pieces.
  */
 public enum Color {
+    WHITE,
+    BLACK
 }

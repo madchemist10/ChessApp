@@ -172,9 +172,9 @@ public class PieceMoveValidationTests {
         Assert.assertNotNull(blackBishopRight);
         //validate all bishop squares are occupied
         Assert.assertTrue(whiteBishopLeft.isOccupied());
-        Assert.assertTrue(whiteBishopLeft.isOccupied());
-        Assert.assertTrue(whiteBishopLeft.isOccupied());
-        Assert.assertTrue(whiteBishopLeft.isOccupied());
+        Assert.assertTrue(whiteBishopRight.isOccupied());
+        Assert.assertTrue(blackBishopLeft.isOccupied());
+        Assert.assertTrue(blackBishopRight.isOccupied());
         //add each bishop square to list
         bishopSquares.add(whiteBishopLeft);
         bishopSquares.add(whiteBishopRight);
@@ -189,6 +189,41 @@ public class PieceMoveValidationTests {
             IPiece bishop = curr.getPiece();
             Assert.assertNotNull(bishop);
             List<ValidMove> validMoves = bishop.getValidMoves();
+            Assert.assertNotNull(validMoves);
+            Assert.assertEquals(0, validMoves.size());
+        }
+    }
+
+    /**
+     * This test validates that on a fresh game start,
+     * that no king is able to move.
+     */
+    @Test
+    public void kingValidMovesValidation_FreshStart(){
+        //generate default board
+        Board board = new Board();
+        List<Square> kingSquares = new LinkedList<>();
+        //get each king piece from the board
+        Square whiteKing = board.getSquare(0,2);
+        Square blackKing = board.getSquare(0,5);
+        //validate all kings squares are not null
+        Assert.assertNotNull(whiteKing);
+        Assert.assertNotNull(blackKing);
+        //validate all king squares are occupied
+        Assert.assertTrue(whiteKing.isOccupied());
+        Assert.assertTrue(blackKing.isOccupied());
+        //add each king square to list
+        kingSquares.add(whiteKing);
+        kingSquares.add(blackKing);
+        /*
+         * iterate over each king
+         * square and ensure that the king
+         * contained on the square has no valid moves.
+         */
+        for(Square curr: kingSquares){
+            IPiece king = curr.getPiece();
+            Assert.assertNotNull(king);
+            List<ValidMove> validMoves = king.getValidMoves();
             Assert.assertNotNull(validMoves);
             Assert.assertEquals(0, validMoves.size());
         }

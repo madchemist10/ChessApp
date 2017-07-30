@@ -13,18 +13,15 @@ import org.junit.Test;
 public class PawnSingleForwardMoveTests {
 
     /**
-     * This test validates that a pawn
-     * that resides on square {1,0} has
-     * a valid move within it's list to move to
-     * {2,0}, that is a single step forward.
+     * Helper routine to validate a single
+     * forward move for a pawn.
+     * @param currRow that the pawn resides on
+     * @param currCol that the pawn resides on
+     * @param destRow of the square immediate forward
+     * @param destCol of the square immediate forward
      */
-    @Test
-    public void moveValidatePawn_r1_c0_Forward_r2_c0(){
+    private static void validatePawnSingleForwardMove(int currRow, int currCol, int destRow, int destCol){
         Board board = new Board();
-        int currRow = 1;
-        int currCol = 0;
-        int destRow = 2;
-        int destCol = 0;
         Square dest = new Square(destRow, destCol);
         Square curr = board.getSquare(currRow, currCol);
         IPiece piece = curr.getPiece();
@@ -33,6 +30,20 @@ public class PawnSingleForwardMoveTests {
         PieceTests.validatePieceMove(piece, validMove);
         Square next = MoveValidator.determineNextSquare(curr,validMove,board);
         Assert.assertTrue(dest.equals(next));
+    }
+    /**
+     * This test validates that a pawn
+     * that resides on square {1,0} has
+     * a valid move within it's list to move to
+     * {2,0}, that is a single step forward.
+     */
+    @Test
+    public void moveValidatePawn_r1_c0_Forward_r2_c0(){
+        int currRow = 1;
+        int currCol = 0;
+        int destRow = 2;
+        int destCol = 0;
+        validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
     }
 
     /**
@@ -43,19 +54,11 @@ public class PawnSingleForwardMoveTests {
      */
     @Test
     public void moveValidatePawn_r1_c1_Forward_r2_c1(){
-        Board board = new Board();
         int currRow = 1;
         int currCol = 1;
         int destRow = 2;
         int destCol = 1;
-        Square dest = new Square(destRow, destCol);
-        Square curr = board.getSquare(currRow, currCol);
-        IPiece piece = curr.getPiece();
-        Assert.assertTrue(piece instanceof Pawn);
-        ValidMove validMove = new ValidMove(Moves.FORWARD, 1);
-        PieceTests.validatePieceMove(piece, validMove);
-        Square next = MoveValidator.determineNextSquare(curr,validMove,board);
-        Assert.assertTrue(dest.equals(next));
+        validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
     }
 
     /**
@@ -66,18 +69,10 @@ public class PawnSingleForwardMoveTests {
      */
     @Test
     public void moveValidatePawn_r1_c2_Forward_r2_c2(){
-        Board board = new Board();
         int currRow = 1;
         int currCol = 2;
         int destRow = 2;
         int destCol = 2;
-        Square dest = new Square(destRow, destCol);
-        Square curr = board.getSquare(currRow, currCol);
-        IPiece piece = curr.getPiece();
-        Assert.assertTrue(piece instanceof Pawn);
-        ValidMove validMove = new ValidMove(Moves.FORWARD, 1);
-        PieceTests.validatePieceMove(piece, validMove);
-        Square next = MoveValidator.determineNextSquare(curr,validMove,board);
-        Assert.assertTrue(dest.equals(next));
+        validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
     }
 }

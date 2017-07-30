@@ -12,7 +12,6 @@ import org.junit.Test;
  */
 public class PawnSingleForwardMoveTests {
 
-
     /**
      * This test validates that a pawn
      * that resides on square {1,0} has
@@ -26,6 +25,29 @@ public class PawnSingleForwardMoveTests {
         int currCol = 0;
         int destRow = 2;
         int destCol = 0;
+        Square dest = new Square(destRow, destCol);
+        Square curr = board.getSquare(currRow, currCol);
+        IPiece piece = curr.getPiece();
+        Assert.assertTrue(piece instanceof Pawn);
+        ValidMove validMove = new ValidMove(Moves.FORWARD, 1);
+        PieceTests.validatePieceMove(piece, validMove);
+        Square next = MoveValidator.determineNextSquare(curr,validMove,board);
+        Assert.assertTrue(dest.equals(next));
+    }
+
+    /**
+     * This test validates that a pawn
+     * that resides on square {1,1} has
+     * a valid move within it's list to move to
+     * {2,1}, that is a single step forward.
+     */
+    @Test
+    public void moveValidatePawn_r1_c1_Forward_r2_c1(){
+        Board board = new Board();
+        int currRow = 1;
+        int currCol = 1;
+        int destRow = 2;
+        int destCol = 1;
         Square dest = new Square(destRow, destCol);
         Square curr = board.getSquare(currRow, currCol);
         IPiece piece = curr.getPiece();

@@ -83,9 +83,24 @@ public class PieceMoveValidationTests {
         }
     }
 
+    /**
+     * Validate that each and only each move
+     * that should be a member of the pawn's
+     * move set are contained within that set.
+     */
     @Test
     public void pawnMoveSetValidation(){
-
+        IPiece pawn = new Pawn(Color.WHITE);
+        List<Moves> moveSet = pawn.getMoveSet();
+        List<Moves> PAWN = new LinkedList<>();
+        PAWN.add(Moves.FORWARD);
+        PAWN.add(Moves.DIAGONAL_FORWARD_LEFT);
+        PAWN.add(Moves.DIAGONAL_FORWARD_RIGHT);
+        PAWN.add(Moves.EN_PASSANT);
+        Assert.assertEquals(PAWN.size(), moveSet.size());
+        for(Moves move: PAWN){
+            Assert.assertTrue(moveSet.contains(move));
+        }
     }
 
     @Test

@@ -165,4 +165,109 @@ public class PawnSingleForwardMoveTests {
         int destCol = 0;
         validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
     }
+    
+    /**
+     * This test validates that a pawn
+     * that resides on square {6,1} has
+     * a valid move within it's list to move to
+     * {5,1}, that is a single step forward.
+     */
+    @Test
+    public void moveValidatePawn_r6_c1_Forward_r5_c1(){
+        int currRow = 6;
+        int currCol = 1;
+        int destRow = 5;
+        int destCol = 1;
+        validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
+    }
+
+    /**
+     * This test validates that a pawn
+     * that resides on square {6,2} has
+     * a valid move within it's list to move to
+     * {5,2}, that is a single step forward.
+     */
+    @Test
+    public void moveValidatePawn_r6_c2_Forward_r5_c2(){
+        int currRow = 6;
+        int currCol = 2;
+        int destRow = 5;
+        int destCol = 2;
+        validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
+    }
+
+    /**
+     * This test validates that a pawn
+     * that resides on square {6,3} has
+     * a valid move within it's list to move to
+     * {5,3}, that is a single step forward.
+     */
+    @Test
+    public void moveValidatePawn_r6_c3_Forward_r5_c3(){
+        int currRow = 6;
+        int currCol = 3;
+        int destRow = 5;
+        int destCol = 3;
+        validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
+    }
+
+    /**
+     * This test validates that a pawn
+     * that resides on square {6,4} has
+     * a valid move within it's list to move to
+     * {5,4}, that is a single step forward.
+     */
+    @Test
+    public void moveValidatePawn_r6_c4_Forward_r5_c4(){
+        int currRow = 6;
+        int currCol = 4;
+        int destRow = 5;
+        int destCol = 4;
+        validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
+    }
+
+    /**
+     * This test validates that a pawn
+     * that resides on square {6,5} has
+     * a valid move within it's list to move to
+     * {5,5}, that is a single step forward.
+     */
+    @Test
+    public void moveValidatePawn_r6_c5_Forward_r5_c5(){
+        int currRow = 6;
+        int currCol = 5;
+        int destRow = 5;
+        int destCol = 5;
+        validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
+    }
+
+    /**
+     * This test validates that a pawn
+     * that resides on square {6,6} has
+     * a valid move within it's list to move to
+     * {5,6}, that is a single step forward.
+     */
+    @Test
+    public void moveValidatePawn_r6_c6_Forward_r5_c6(){
+        int currRow = 6;
+        int currCol = 6;
+        int destRow = 5;
+        int destCol = 6;
+        validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
+    }
+
+    /**
+     * This test validates that a pawn
+     * that resides on square {6,7} has
+     * a valid move within it's list to move to
+     * {5,7}, that is a single step forward.
+     */
+    @Test
+    public void moveValidatePawn_r6_c7_Forward_r5_c7(){
+        int currRow = 6;
+        int currCol = 7;
+        int destRow = 5;
+        int destCol = 7;
+        validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
+    }
 }

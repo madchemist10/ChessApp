@@ -1,9 +1,6 @@
 package app;
 
-import app.piece.Bishop;
-import app.piece.IPiece;
-import app.piece.King;
-import app.piece.Moves;
+import app.piece.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -62,9 +59,28 @@ public class PieceMoveValidationTests {
         }
     }
 
+    /**
+     * Validate that each and only each move
+     * that should be a member of the knight's
+     * move set are contained within that set.
+     */
     @Test
     public void knightMoveSetValidation(){
-
+        IPiece knight = new Knight(Color.WHITE);
+        List<Moves> moveSet = knight.getMoveSet();
+        List<Moves> KNIGHT = new LinkedList<>();
+        KNIGHT.add(Moves.L_FORWARD_LEFT);
+        KNIGHT.add(Moves.L_FORWARD_RIGHT);
+        KNIGHT.add(Moves.L_LEFT_FORWARD);
+        KNIGHT.add(Moves.L_RIGHT_FORWARD);
+        KNIGHT.add(Moves.L_BACKWARD_LEFT);
+        KNIGHT.add(Moves.L_BACKWARD_RIGHT);
+        KNIGHT.add(Moves.L_LEFT_BACKWARD);
+        KNIGHT.add(Moves.L_RIGHT_BACKWARD);
+        Assert.assertEquals(KNIGHT.size(), moveSet.size());
+        for(Moves move: KNIGHT){
+            Assert.assertTrue(moveSet.contains(move));
+        }
     }
 
     @Test

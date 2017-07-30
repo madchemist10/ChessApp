@@ -11,6 +11,10 @@ import app.piece.IPiece;
  */
 public class Square {
 
+    public Square(int row, int col){
+
+    }
+
     private boolean isOccupied = false;
 
     public boolean isOccupied(){

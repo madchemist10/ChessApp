@@ -94,4 +94,25 @@ public class PieceCreationTests {
         Assert.assertEquals(MoveSets.PAWN, piece.getMoveSet());
         Assert.assertNull(piece.getValidMoves());
     }
+
+    /**
+     * This test validates that
+     * default configuration for a Queen
+     * is correct.
+     * We validate:
+     * <ul>
+     *     <li>{@link Color}</li>
+     *     <li>{@link MoveSets#QUEEN}</li>
+     * </ul>
+     */
+    @Test
+    public void validQueenCreation(){
+        Color color = Color.WHITE;
+        IPiece piece = new Queen(color);
+        Assert.assertNotNull(piece);
+        Assert.assertEquals(color, piece.getColor());
+        Assert.assertNull(piece.getCurrentPosition());
+        Assert.assertEquals(MoveSets.QUEEN, piece.getMoveSet());
+        Assert.assertNull(piece.getValidMoves());
+    }
 }

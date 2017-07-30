@@ -25,7 +25,9 @@ public class PieceTests{
         Board board = new Board();
         int currRow = 1;
         int currCol = 0;
-        Square dest = new Square(2, 0);
+        int destRow = 2;
+        int destCol = 0;
+        Square dest = new Square(destRow, destCol);
         Square curr = board.getSquare(currRow, currCol);
         IPiece piece = curr.getPiece();
         Assert.assertTrue(piece instanceof Pawn);

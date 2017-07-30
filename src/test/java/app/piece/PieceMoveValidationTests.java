@@ -1,5 +1,6 @@
-package app;
+package app.piece;
 
+import app.Color;
 import app.piece.*;
 import org.junit.Assert;
 import org.junit.Test;

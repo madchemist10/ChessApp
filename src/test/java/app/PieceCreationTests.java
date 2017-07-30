@@ -115,4 +115,25 @@ public class PieceCreationTests {
         Assert.assertEquals(MoveSets.QUEEN, piece.getMoveSet());
         Assert.assertNull(piece.getValidMoves());
     }
+
+    /**
+     * This test validates that
+     * default configuration for a Rook
+     * is correct.
+     * We validate:
+     * <ul>
+     *     <li>{@link Color}</li>
+     *     <li>{@link MoveSets#ROOK}</li>
+     * </ul>
+     */
+    @Test
+    public void validRookCreation(){
+        Color color = Color.WHITE;
+        IPiece piece = new Rook(color);
+        Assert.assertNotNull(piece);
+        Assert.assertEquals(color, piece.getColor());
+        Assert.assertNull(piece.getCurrentPosition());
+        Assert.assertEquals(MoveSets.ROOK, piece.getMoveSet());
+        Assert.assertNull(piece.getValidMoves());
+    }
 }

@@ -15,14 +15,40 @@ import java.util.List;
  */
 abstract class APiece implements IPiece {
 
+    /**
+     * This piece's defined color.
+     * Used in ensuring capture is against
+     * opponent piece.
+     */
     private final Color color;
 
+    /**
+     * The current square that this
+     * piece sits on.
+     */
     private Square currentSquare;
 
+    /**
+     * The board for which this piece
+     * is a member of. Used for
+     * determining moves.
+     */
     private Board board;
 
+    /**
+     * Local list of all valid moves
+     * that this piece can make based
+     * on the current layout of the board.
+     */
     private List<ValidMove> validMoves = null;
 
+    /**
+     * Create a new abstract piece, that contains
+     * all functionality shared among each
+     * of the piece types.
+     * @param color that this piece will remain
+     *              for the duration of the game.
+     */
     APiece(Color color){
         this.color = color;
     }

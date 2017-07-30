@@ -1,5 +1,7 @@
 package app.board;
 
+import app.piece.IPiece;
+
 /**
  * This represents a singular square that is
  * part of the master board. Each square understands
@@ -8,4 +10,26 @@ package app.board;
  * another piece may take its location.
  */
 public class Square {
+
+    private boolean isOccupied = false;
+
+    public boolean isOccupied(){
+        return isOccupied;
+    }
+
+    public int getRow(){
+        return 0;
+    }
+
+    public int getCol(){
+        return 0;
+    }
+
+    public IPiece getPiece(){
+        return null;
+    }
+
+    public boolean equals(Square square){
+        return getRow() == square.getRow() && getCol() == square.getCol();
+    }
 }

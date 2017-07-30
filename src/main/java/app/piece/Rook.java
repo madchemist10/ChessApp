@@ -1,5 +1,9 @@
 package app.piece;
 
+import app.Color;
+
+import java.util.List;
+
 /**
  * The Rook is a vertical can horizontal
  * moving unit that is able to advance
@@ -7,5 +11,21 @@ package app.piece;
  * that is within eye-sight of the current
  * occupied square.
  */
-public class Rook {
+public class Rook extends APiece{
+
+    /**
+     * Create a new Rook with the specified color.
+     * @param color of this Rook
+     */
+    public Rook(Color color){
+        super(color);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Moves> getMoveSet() {
+        return MoveSets.ROOK;
+    }
 }

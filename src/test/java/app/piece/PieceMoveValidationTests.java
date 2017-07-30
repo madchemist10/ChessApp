@@ -292,4 +292,39 @@ public class PieceMoveValidationTests {
         validMove = new ValidMove(Moves.L_BACKWARD_RIGHT,1);
         PieceTests.validatePieceMove(blackKnightRight,validMove);
     }
+
+    /**
+     * This test validates that on a fresh game start,
+     * that no queen is able to move.
+     */
+    @Test
+    public void queenValidMovesValidation_FreshStart(){
+        //generate default board
+        Board board = new Board();
+        List<Square> queenSquares = new LinkedList<>();
+        //get each queen piece from the board
+        Square whiteQueen = board.getSquare(0,3);
+        Square blackQueen = board.getSquare(7,3);
+        //validate all queens squares are not null
+        Assert.assertNotNull(whiteQueen);
+        Assert.assertNotNull(blackQueen);
+        //validate all queen squares are occupied
+        Assert.assertTrue(whiteQueen.isOccupied());
+        Assert.assertTrue(blackQueen.isOccupied());
+        //add each queen square to list
+        queenSquares.add(whiteQueen);
+        queenSquares.add(blackQueen);
+        /*
+         * iterate over each queen
+         * square and ensure that the queen
+         * contained on the square has no valid moves.
+         */
+        for(Square curr: queenSquares){
+            IPiece queen = curr.getPiece();
+            Assert.assertNotNull(queen);
+            List<ValidMove> validMoves = queen.getValidMoves();
+            Assert.assertNotNull(validMoves);
+            Assert.assertEquals(0, validMoves.size());
+        }
+    }
 }

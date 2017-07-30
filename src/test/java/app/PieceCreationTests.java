@@ -73,4 +73,25 @@ public class PieceCreationTests {
         Assert.assertEquals(MoveSets.KNIGHT, piece.getMoveSet());
         Assert.assertNull(piece.getValidMoves());
     }
+
+    /**
+     * This test validates that
+     * default configuration for a Pawn
+     * is correct.
+     * We validate:
+     * <ul>
+     *     <li>{@link Color}</li>
+     *     <li>{@link MoveSets#PAWN}</li>
+     * </ul>
+     */
+    @Test
+    public void validPawnCreation(){
+        Color color = Color.WHITE;
+        IPiece piece = new Pawn(color);
+        Assert.assertNotNull(piece);
+        Assert.assertEquals(color, piece.getColor());
+        Assert.assertNull(piece.getCurrentPosition());
+        Assert.assertEquals(MoveSets.PAWN, piece.getMoveSet());
+        Assert.assertNull(piece.getValidMoves());
+    }
 }

@@ -204,8 +204,8 @@ public class PieceMoveValidationTests {
         Board board = new Board();
         List<Square> kingSquares = new LinkedList<>();
         //get each king piece from the board
-        Square whiteKing = board.getSquare(0,2);
-        Square blackKing = board.getSquare(0,5);
+        Square whiteKing = board.getSquare(0,4);
+        Square blackKing = board.getSquare(7,4);
         //validate all kings squares are not null
         Assert.assertNotNull(whiteKing);
         Assert.assertNotNull(blackKing);
@@ -227,5 +227,69 @@ public class PieceMoveValidationTests {
             Assert.assertNotNull(validMoves);
             Assert.assertEquals(0, validMoves.size());
         }
+    }
+
+    /**
+     * This test validates that on a fresh game start,
+     * that each knight is able to move it's two places.
+     */
+    @Test
+    public void knightValidMovesValidation_FreshStart(){
+        int numValidMovesPerKnight = 2;
+        //generate default board
+        Board board = new Board();
+        //get each knight piece from the board
+        Square whiteKnightLeftSquare = board.getSquare(0,1);
+        Square whiteKnightRightSquare = board.getSquare(0,6);
+        Square blackKnightLeftSquare = board.getSquare(7,1);
+        Square blackKnightRightSquare = board.getSquare(7,6);
+        //validate all knights squares are not null
+        Assert.assertNotNull(whiteKnightLeftSquare);
+        Assert.assertNotNull(whiteKnightRightSquare);
+        Assert.assertNotNull(blackKnightLeftSquare);
+        Assert.assertNotNull(blackKnightRightSquare);
+        //validate all knight squares are occupied
+        Assert.assertTrue(whiteKnightLeftSquare.isOccupied());
+        Assert.assertTrue(whiteKnightRightSquare.isOccupied());
+        Assert.assertTrue(blackKnightLeftSquare.isOccupied());
+        Assert.assertTrue(blackKnightRightSquare.isOccupied());
+        //retrieve and validate each knight piece
+        IPiece whiteKnightLeft = whiteKnightLeftSquare.getPiece();
+        IPiece whiteKnightRight = whiteKnightRightSquare.getPiece();
+        IPiece blackKnightLeft = blackKnightLeftSquare.getPiece();
+        IPiece blackKnightRight = blackKnightRightSquare.getPiece();
+        Assert.assertNotNull(whiteKnightLeft);
+        Assert.assertNotNull(whiteKnightRight);
+        Assert.assertNotNull(blackKnightLeft);
+        Assert.assertNotNull(blackKnightRight);
+        //validate each knight to have 2 possible moves
+        List<ValidMove> whiteKnightLeftMoves = whiteKnightLeft.getValidMoves();
+        List<ValidMove> whiteKnightRightMoves = whiteKnightRight.getValidMoves();
+        List<ValidMove> blackKnightLeftMoves = blackKnightLeft.getValidMoves();
+        List<ValidMove> blackKnightRightMoves = blackKnightRight.getValidMoves();
+        Assert.assertEquals(numValidMovesPerKnight,whiteKnightLeftMoves.size());
+        Assert.assertEquals(numValidMovesPerKnight,whiteKnightRightMoves.size());
+        Assert.assertEquals(numValidMovesPerKnight,blackKnightLeftMoves.size());
+        Assert.assertEquals(numValidMovesPerKnight,blackKnightRightMoves.size());
+        //validate each knight's valid moves are correct
+        ValidMove validMove = new ValidMove(Moves.L_FORWARD_LEFT,1);
+        PieceTests.validatePieceMove(whiteKnightLeft,validMove);
+        validMove = new ValidMove(Moves.L_FORWARD_RIGHT,1);
+        PieceTests.validatePieceMove(whiteKnightLeft,validMove);
+
+        validMove = new ValidMove(Moves.L_FORWARD_LEFT,1);
+        PieceTests.validatePieceMove(whiteKnightRight,validMove);
+        validMove = new ValidMove(Moves.L_FORWARD_RIGHT,1);
+        PieceTests.validatePieceMove(whiteKnightRight,validMove);
+
+        validMove = new ValidMove(Moves.L_BACKWARD_LEFT,1);
+        PieceTests.validatePieceMove(blackKnightLeft,validMove);
+        validMove = new ValidMove(Moves.L_BACKWARD_RIGHT,1);
+        PieceTests.validatePieceMove(blackKnightLeft,validMove);
+
+        validMove = new ValidMove(Moves.L_BACKWARD_LEFT,1);
+        PieceTests.validatePieceMove(blackKnightRight,validMove);
+        validMove = new ValidMove(Moves.L_BACKWARD_RIGHT,1);
+        PieceTests.validatePieceMove(blackKnightRight,validMove);
     }
 }

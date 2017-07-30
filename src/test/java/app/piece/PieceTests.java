@@ -20,7 +20,7 @@ class PieceTests{
      * @param validMove that should be contained within
      *                  the piece's valid moves.
      */
-    private static void validatePieceMove(IPiece piece, ValidMove validMove){
+    static void validatePieceMove(IPiece piece, ValidMove validMove){
         List<ValidMove> validMoves = piece.getValidMoves();
         boolean moveContained = false;
         for(ValidMove move: validMoves){

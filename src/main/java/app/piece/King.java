@@ -24,7 +24,7 @@ public class King extends APiece{
      * {@inheritDoc}
      */
     @Override
-    List<Moves> getMoveSet() {
+    public List<Moves> getMoveSet() {
         return MoveSets.KING;
     }
 }

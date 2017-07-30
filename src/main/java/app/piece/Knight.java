@@ -27,7 +27,7 @@ public class Knight extends APiece {
      * {@inheritDoc}
      */
     @Override
-    List<Moves> getMoveSet() {
+    public List<Moves> getMoveSet() {
         return MoveSets.KNIGHT;
     }
 }

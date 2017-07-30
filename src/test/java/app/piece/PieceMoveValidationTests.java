@@ -327,4 +327,47 @@ public class PieceMoveValidationTests {
             Assert.assertEquals(0, validMoves.size());
         }
     }
+    
+    /**
+     * This test validates that on a fresh game start,
+     * that no rook is able to move.
+     */
+    @Test
+    public void rookValidMovesValidation_FreshStart(){
+        //generate default board
+        Board board = new Board();
+        List<Square> rookSquares = new LinkedList<>();
+        //get each rook piece from the board
+        Square whiteRookLeft = board.getSquare(0,0);
+        Square whiteRookRight = board.getSquare(0,7);
+        Square blackRookLeft = board.getSquare(7,0);
+        Square blackRookRight = board.getSquare(7,7);
+        //validate all rooks squares are not null
+        Assert.assertNotNull(whiteRookLeft);
+        Assert.assertNotNull(whiteRookRight);
+        Assert.assertNotNull(blackRookLeft);
+        Assert.assertNotNull(blackRookRight);
+        //validate all rook squares are occupied
+        Assert.assertTrue(whiteRookLeft.isOccupied());
+        Assert.assertTrue(whiteRookRight.isOccupied());
+        Assert.assertTrue(blackRookLeft.isOccupied());
+        Assert.assertTrue(blackRookRight.isOccupied());
+        //add each rook square to list
+        rookSquares.add(whiteRookLeft);
+        rookSquares.add(whiteRookRight);
+        rookSquares.add(blackRookLeft);
+        rookSquares.add(blackRookRight);
+        /*
+         * iterate over each rook
+         * square and ensure that the rook
+         * contained on the square has no valid moves.
+         */
+        for(Square curr: rookSquares){
+            IPiece rook = curr.getPiece();
+            Assert.assertNotNull(rook);
+            List<ValidMove> validMoves = rook.getValidMoves();
+            Assert.assertNotNull(validMoves);
+            Assert.assertEquals(0, validMoves.size());
+        }
+    }
 }

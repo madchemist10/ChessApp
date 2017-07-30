@@ -63,9 +63,9 @@ public class PawnSingleForwardMoveTests {
 
     /**
      * This test validates that a pawn
-     * that resides on square {1,1} has
+     * that resides on square {1,2} has
      * a valid move within it's list to move to
-     * {2,1}, that is a single step forward.
+     * {2,2}, that is a single step forward.
      */
     @Test
     public void moveValidatePawn_r1_c2_Forward_r2_c2(){
@@ -73,6 +73,21 @@ public class PawnSingleForwardMoveTests {
         int currCol = 2;
         int destRow = 2;
         int destCol = 2;
+        validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
+    }
+
+    /**
+     * This test validates that a pawn
+     * that resides on square {1,3} has
+     * a valid move within it's list to move to
+     * {2,3}, that is a single step forward.
+     */
+    @Test
+    public void moveValidatePawn_r1_c3_Forward_r2_c3(){
+        int currRow = 1;
+        int currCol = 3;
+        int destRow = 2;
+        int destCol = 3;
         validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
     }
 }

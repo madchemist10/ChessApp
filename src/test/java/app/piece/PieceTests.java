@@ -11,7 +11,7 @@ import java.util.List;
  * to ensure that pieces can only make
  * legitimate moves.
  */
-public class PieceTests{
+class PieceTests{
 
     /**
      * Helper routine to validate that the given
@@ -20,7 +20,7 @@ public class PieceTests{
      * @param validMove that should be contained within
      *                  the piece's valid moves.
      */
-    static void validatePieceMove(IPiece piece, ValidMove validMove){
+    private static void validatePieceMove(IPiece piece, ValidMove validMove){
         List<ValidMove> validMoves = piece.getValidMoves();
         boolean moveContained = false;
         for(ValidMove move: validMoves){

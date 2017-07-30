@@ -35,7 +35,7 @@ public class PieceTests{
         ValidMove validMove = new ValidMove(Moves.FORWARD, 1);
         boolean moveContained = false;
         for(ValidMove move: validMoves){
-            if(move.getMove().equals(validMove.getMove()) && validMove.getMagnitude() == validMove.getMagnitude()){
+            if(validMove.equals(move)){
                 moveContained = true;
                 break;
             }

@@ -150,4 +150,19 @@ public class PawnSingleForwardMoveTests {
         int destCol = 7;
         validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
     }
+
+    /**
+     * This test validates that a pawn
+     * that resides on square {6,0} has
+     * a valid move within it's list to move to
+     * {5,0}, that is a single step forward.
+     */
+    @Test
+    public void moveValidatePawn_r6_c0_Forward_r5_c0(){
+        int currRow = 6;
+        int currCol = 0;
+        int destRow = 5;
+        int destCol = 0;
+        validatePawnSingleForwardMove(currRow, currCol, destRow, destCol);
+    }
 }

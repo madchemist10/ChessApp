@@ -1,9 +1,6 @@
 package app.piece;
 
-import app.board.Board;
-import app.board.Square;
 import org.junit.Assert;
-import org.junit.Test;
 
 import java.util.List;
 
@@ -15,24 +12,14 @@ import java.util.List;
 public class PieceTests{
 
     /**
-     * This test validates that a pawn
-     * that resides on square {1,0} has
-     * a valid move within it's list to move to
-     * {2,0}, that is a single step forward.
+     * Helper routine to validate that the given
+     * piece can make the specified move.
+     * @param piece that wants to move
+     * @param validMove that should be contained within
+     *                  the piece's valid moves.
      */
-    @Test
-    public void moveValidatePawn_r1_c0_Forward_r2_c0(){
-        Board board = new Board();
-        int currRow = 1;
-        int currCol = 0;
-        int destRow = 2;
-        int destCol = 0;
-        Square dest = new Square(destRow, destCol);
-        Square curr = board.getSquare(currRow, currCol);
-        IPiece piece = curr.getPiece();
-        Assert.assertTrue(piece instanceof Pawn);
+    static void validatePieceMove(IPiece piece, ValidMove validMove){
         List<ValidMove> validMoves = piece.getValidMoves();
-        ValidMove validMove = new ValidMove(Moves.FORWARD, 1);
         boolean moveContained = false;
         for(ValidMove move: validMoves){
             if(validMove.equals(move)){
@@ -41,7 +28,5 @@ public class PieceTests{
             }
         }
         Assert.assertTrue(moveContained);
-        Square next = MoveValidator.determineNextSquare(curr,validMove,board);
-        Assert.assertTrue(dest.equals(next));
     }
 }

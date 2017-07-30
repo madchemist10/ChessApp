@@ -1,9 +1,6 @@
 package app;
 
-import app.piece.Bishop;
-import app.piece.IPiece;
-import app.piece.King;
-import app.piece.MoveSets;
+import app.piece.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -53,6 +50,27 @@ public class PieceCreationTests {
         Assert.assertEquals(color, piece.getColor());
         Assert.assertNull(piece.getCurrentPosition());
         Assert.assertEquals(MoveSets.KING, piece.getMoveSet());
+        Assert.assertNull(piece.getValidMoves());
+    }
+
+    /**
+     * This test validates that
+     * default configuration for a Knight
+     * is correct.
+     * We validate:
+     * <ul>
+     *     <li>{@link Color}</li>
+     *     <li>{@link MoveSets#KNIGHT}</li>
+     * </ul>
+     */
+    @Test
+    public void validKnightCreation(){
+        Color color = Color.WHITE;
+        IPiece piece = new Knight(color);
+        Assert.assertNotNull(piece);
+        Assert.assertEquals(color, piece.getColor());
+        Assert.assertNull(piece.getCurrentPosition());
+        Assert.assertEquals(MoveSets.KNIGHT, piece.getMoveSet());
         Assert.assertNull(piece.getValidMoves());
     }
 }

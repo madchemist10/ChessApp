@@ -52,4 +52,16 @@ public class ValidMove {
     public int getMagnitude(){
         return magnitude;
     }
+
+    /**
+     * Custom equals routine to ensure
+     * the equality of this valid move
+     * against another valid move.
+     * @param validMove that should be checked against
+     *                  this.
+     * @return true if same, false otherwise.
+     */
+    public boolean equals(ValidMove validMove){
+        return magnitude == validMove.getMagnitude() && move.equals(validMove.getMove());
+    }
 }

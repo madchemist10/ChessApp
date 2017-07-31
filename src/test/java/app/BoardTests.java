@@ -40,7 +40,7 @@ public class BoardTests {
             IPiece piece = square.getPiece();
             Assert.assertNotNull(piece);
             Assert.assertTrue(piece instanceof Pawn);
-            //// TODO: 7/30/2017 validate color
+            Assert.assertEquals(Color.WHITE,piece.getColor());
             Assert.assertTrue(square.equals(piece.getCurrentPosition()));
         }
         row = 6;
@@ -51,7 +51,7 @@ public class BoardTests {
             IPiece piece = square.getPiece();
             Assert.assertNotNull(piece);
             Assert.assertTrue(piece instanceof Pawn);
-            //// TODO: 7/30/2017 validate color
+            Assert.assertEquals(Color.BLACK,piece.getColor());
             Assert.assertTrue(square.equals(piece.getCurrentPosition()));
         }
     }
@@ -75,7 +75,7 @@ public class BoardTests {
         IPiece piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof Rook);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.WHITE,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
 
         col = 7;
@@ -87,7 +87,7 @@ public class BoardTests {
         piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof Rook);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.WHITE,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
         
         row = 7;
@@ -100,7 +100,7 @@ public class BoardTests {
         piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof Rook);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.BLACK,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
 
         col = 7;
@@ -112,7 +112,7 @@ public class BoardTests {
         piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof Rook);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.BLACK,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
     }
 
@@ -135,7 +135,7 @@ public class BoardTests {
         IPiece piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof Knight);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.WHITE,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
 
         col = 6;
@@ -147,7 +147,7 @@ public class BoardTests {
         piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof Knight);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.WHITE,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
 
         row = 7;
@@ -160,7 +160,7 @@ public class BoardTests {
         piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof Knight);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.BLACK,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
 
         col = 6;
@@ -172,7 +172,7 @@ public class BoardTests {
         piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof Knight);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.BLACK,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
     }
 
@@ -195,7 +195,7 @@ public class BoardTests {
         IPiece piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof Bishop);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.WHITE,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
 
         col = 5;
@@ -207,7 +207,7 @@ public class BoardTests {
         piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof Bishop);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.WHITE,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
 
         row = 7;
@@ -220,7 +220,7 @@ public class BoardTests {
         piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof Bishop);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.BLACK,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
 
         col = 5;
@@ -232,7 +232,7 @@ public class BoardTests {
         piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof Bishop);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.BLACK,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
     }
 
@@ -256,7 +256,7 @@ public class BoardTests {
         IPiece piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof King);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.WHITE,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
 
         row = 7;
@@ -268,7 +268,7 @@ public class BoardTests {
         piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof King);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.BLACK,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
     }
 
@@ -291,7 +291,7 @@ public class BoardTests {
         IPiece piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof Queen);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.WHITE,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
 
         row = 7;
@@ -303,7 +303,7 @@ public class BoardTests {
         piece = square.getPiece();
         Assert.assertNotNull(piece);
         Assert.assertTrue(piece instanceof Queen);
-        //// TODO: 7/30/2017 validate color 
+        Assert.assertEquals(Color.BLACK,piece.getColor());
         Assert.assertTrue(square.equals(piece.getCurrentPosition()));
     }
 }

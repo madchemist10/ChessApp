@@ -213,7 +213,6 @@ public class MoveSimulationTests {
         int magnitude = 1;
         //create board
         Board board = new Board();
-        //remove all pawns
         validateMove(startRow, startCol, magnitude, Moves.L_LEFT_FORWARD, board);
     }
 
@@ -230,7 +229,6 @@ public class MoveSimulationTests {
         int magnitude = 1;
         //create board
         Board board = new Board();
-        //remove all pawns
         validateMove(startRow, startCol, magnitude, Moves.L_FORWARD_RIGHT, board);
     }
 
@@ -247,7 +245,6 @@ public class MoveSimulationTests {
         int magnitude = 1;
         //create board
         Board board = new Board();
-        //remove all pawns
         validateMove(startRow, startCol, magnitude, Moves.L_BACKWARD_LEFT, board);
     }
 
@@ -264,7 +261,78 @@ public class MoveSimulationTests {
         int magnitude = 1;
         //create board
         Board board = new Board();
-        //remove all pawns
         validateMove(startRow, startCol, magnitude, Moves.L_BACKWARD_RIGHT, board);
+    }
+
+
+    /**
+     * Test moving a bishop when the next square is
+     * gathered based on the next square algorithm.
+     * Simulates a bishop moving one square diagonal left.
+     */
+    @Test
+    public void moveBishopViaValidMoveDiagonal_Forward_Left(){
+        int startRow = 0;
+        int startCol = 2;
+        int magnitude = 1;
+        //create board
+        Board board = new Board();
+        //remove all pawns
+        removeAllPawns(board);
+        validateMove(startRow, startCol, magnitude, Moves.DIAGONAL_FORWARD_LEFT, board);
+    }
+
+    /**
+     * Test moving a bishop when the next square is
+     * gathered based on the next square algorithm.
+     * Simulates a bishop moving two squares forward
+     * and one square right.
+     */
+    @Test
+    public void moveBishopViaValidMoveDiagonal_Forward_Right(){
+        int startRow = 0;
+        int startCol = 2;
+        int magnitude = 1;
+        //create board
+        Board board = new Board();
+        //remove all pawns
+        removeAllPawns(board);
+        validateMove(startRow, startCol, magnitude, Moves.DIAGONAL_FORWARD_RIGHT, board);
+    }
+
+    /**
+     * Test moving a bishop when the next square is
+     * gathered based on the next square algorithm.
+     * Simulates a bishop moving two squares backward
+     * and one square left.
+     */
+    @Test
+    public void moveBishopViaValidMoveDiagonal_Backward_Left(){
+        int startRow = 7;
+        int startCol = 2;
+        int magnitude = 1;
+        //create board
+        Board board = new Board();
+        //remove all pawns
+        removeAllPawns(board);
+        validateMove(startRow, startCol, magnitude, Moves.DIAGONAL_BACKWARD_LEFT, board);
+    }
+
+    /**
+     * Test moving a bishop when the next square is
+     * gathered based on the next square algorithm.
+     * Simulates a bishop moving two squares backward
+     * and one square right.
+     */
+    @Test
+    public void moveBishopViaValidMoveDiagonal_Backward_Right(){
+        int startRow = 7;
+        int startCol = 2;
+        int magnitude = 1;
+        //create board
+        Board board = new Board();
+        //remove all pawns
+        removeAllPawns(board);
+        validateMove(startRow, startCol, magnitude, Moves.DIAGONAL_BACKWARD_RIGHT, board);
     }
 }

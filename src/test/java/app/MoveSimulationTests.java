@@ -165,4 +165,106 @@ public class MoveSimulationTests {
         removeAllPawns(board);
         validateMove(startRow, startCol, magnitude, Moves.FORWARD, board);
     }
+
+    /**
+     * Test moving a rook when the next square is
+     * gathered based on the next square algorithm.
+     * Simulates a rook moving two squares forward.
+     */
+    @Test
+    public void moveRookViaValidMoveSingleBackward(){
+        int startRow = 7;
+        int startCol = 0;
+        int magnitude = 1;
+        //create board
+        Board board = new Board();
+        //remove all pawns
+        removeAllPawns(board);
+        validateMove(startRow, startCol, magnitude, Moves.BACKWARD, board);
+    }
+
+    /**
+     * Test moving a rook when the next square is
+     * gathered based on the next square algorithm.
+     * Simulates a rook moving two squares forward.
+     */
+    @Test
+    public void moveRookViaValidMoveDoubleBackward(){
+        int startRow = 7;
+        int startCol = 0;
+        int magnitude = 2;
+        //create board
+        Board board = new Board();
+        //remove all pawns
+        removeAllPawns(board);
+        validateMove(startRow, startCol, magnitude, Moves.BACKWARD, board);
+    }
+
+    /**
+     * Test moving a knight when the next square is
+     * gathered based on the next square algorithm.
+     * Simulates a knight moving two squares forward
+     * and one square left.
+     */
+    @Test
+    public void moveKnightViaValidMoveL_Forward_Left(){
+        int startRow = 0;
+        int startCol = 1;
+        int magnitude = 1;
+        //create board
+        Board board = new Board();
+        //remove all pawns
+        validateMove(startRow, startCol, magnitude, Moves.L_LEFT_FORWARD, board);
+    }
+
+    /**
+     * Test moving a knight when the next square is
+     * gathered based on the next square algorithm.
+     * Simulates a knight moving two squares forward
+     * and one square right.
+     */
+    @Test
+    public void moveKnightViaValidMoveL_Forward_Right(){
+        int startRow = 0;
+        int startCol = 1;
+        int magnitude = 1;
+        //create board
+        Board board = new Board();
+        //remove all pawns
+        validateMove(startRow, startCol, magnitude, Moves.L_FORWARD_RIGHT, board);
+    }
+
+    /**
+     * Test moving a knight when the next square is
+     * gathered based on the next square algorithm.
+     * Simulates a knight moving two squares backward
+     * and one square left.
+     */
+    @Test
+    public void moveKnightViaValidMoveL_Backward_Left(){
+        int startRow = 7;
+        int startCol = 1;
+        int magnitude = 1;
+        //create board
+        Board board = new Board();
+        //remove all pawns
+        validateMove(startRow, startCol, magnitude, Moves.L_BACKWARD_LEFT, board);
+    }
+
+    /**
+     * Test moving a knight when the next square is
+     * gathered based on the next square algorithm.
+     * Simulates a knight moving two squares backward
+     * and one square right.
+     */
+    @Test
+    public void moveKnightViaValidMoveL_Backward_Right(){
+        int startRow = 7;
+        int startCol = 1;
+        int magnitude = 1;
+        //create board
+        Board board = new Board();
+        //remove all pawns
+        validateMove(startRow, startCol, magnitude, Moves.L_BACKWARD_RIGHT, board);
+    }
 }

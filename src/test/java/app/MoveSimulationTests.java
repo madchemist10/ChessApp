@@ -82,4 +82,44 @@ public class MoveSimulationTests {
         Assert.assertTrue(nextSquare.equals(piece.getCurrentPosition()));
         Assert.assertTrue(nextSquare.isOccupied());
     }
+
+    /**
+     * Test moving a pawn when the next square is
+     * gathered based on the next square algorithm.
+     * This is moving a pawn two squares out.
+     */
+    @Test
+    public void movePawnViaValidMoveDoubleForward(){
+        //create board
+        Board board = new Board();
+        //get square for pawn
+        Square square = board.getSquare(1,2);
+        //get pawn from square
+        IPiece piece = square.getPiece();
+        Assert.assertTrue(piece instanceof Pawn);
+        List<ValidMove> pawnMoves = piece.getValidMoves();
+        ValidMove forward_2 = null;
+        //find valid move that we are looking for
+        for(ValidMove move: pawnMoves){
+            if(move.getMagnitude() == 2 && move.getMove().equals(Moves.FORWARD)){
+                forward_2 = move;
+                break;
+            }
+        }
+        Assert.assertNotNull(forward_2);
+        //find next square we can move to based on move
+        Square nextSquare = MoveValidator.determineNextSquare(square,forward_2,board);
+        //validate square is what we want
+        Assert.assertEquals(3, nextSquare.getRow());
+        Assert.assertEquals(2, nextSquare.getCol());
+        //assign new position for piece
+        piece.setCurrentPosition(nextSquare);
+        //validate the old square does not know about piece
+        Assert.assertNull(square.getPiece());
+        Assert.assertFalse(square.isOccupied());
+        //validate next square knows about piece
+        Assert.assertEquals(piece, nextSquare.getPiece());
+        Assert.assertTrue(nextSquare.equals(piece.getCurrentPosition()));
+        Assert.assertTrue(nextSquare.isOccupied());
+    }
 }

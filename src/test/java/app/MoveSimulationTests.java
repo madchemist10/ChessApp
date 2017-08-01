@@ -41,15 +41,18 @@ public class MoveSimulationTests {
      */
     @Test
     public void movePawnSingleForward(){
+        int startRow = 1;
+        int startCol = 0;
+        int magnitude = 1;
         //create board
         Board board = new Board();
         //get square for pawn
-        Square square = board.getSquare(1,0);
+        Square square = board.getSquare(startRow,startCol);
         //get pawn from square
         IPiece piece = square.getPiece();
         Assert.assertTrue(piece instanceof Pawn);
         //get square we are moving pawn to
-        Square nextSquare = board.getSquare(2,0);
+        Square nextSquare = board.getSquare(startRow+magnitude,startCol);
         //assign new position for piece
         piece.setCurrentPosition(nextSquare);
         //validate the old square does not know about piece
@@ -67,28 +70,31 @@ public class MoveSimulationTests {
      */
     @Test
     public void movePawnViaValidMoveSingleForward(){
+        int startRow = 1;
+        int startCol = 1;
+        int magnitude = 1;
         //create board
         Board board = new Board();
         //get square for pawn
-        Square square = board.getSquare(1,1);
+        Square square = board.getSquare(startRow,startCol);
         //get pawn from square
         IPiece piece = square.getPiece();
         Assert.assertTrue(piece instanceof Pawn);
         List<ValidMove> pawnMoves = piece.getValidMoves();
-        ValidMove forward_1 = null;
+        ValidMove forward = null;
         //find valid move that we are looking for
         for(ValidMove move: pawnMoves){
-            if(move.getMagnitude() == 1 && move.getMove().equals(Moves.FORWARD)){
-                forward_1 = move;
+            if(move.getMagnitude() == magnitude && move.getMove().equals(Moves.FORWARD)){
+                forward = move;
                 break;
             }
         }
-        Assert.assertNotNull(forward_1);
+        Assert.assertNotNull(forward);
         //find next square we can move to based on move
-        Square nextSquare = MoveValidator.determineNextSquare(square,forward_1,board);
+        Square nextSquare = MoveValidator.determineNextSquare(square,forward,board);
         //validate square is what we want
-        Assert.assertEquals(2, nextSquare.getRow());
-        Assert.assertEquals(1, nextSquare.getCol());
+        Assert.assertEquals(startRow+magnitude, nextSquare.getRow());
+        Assert.assertEquals(startCol, nextSquare.getCol());
         //assign new position for piece
         piece.setCurrentPosition(nextSquare);
         //validate the old square does not know about piece
@@ -107,28 +113,121 @@ public class MoveSimulationTests {
      */
     @Test
     public void movePawnViaValidMoveDoubleForward(){
+        int startRow = 1;
+        int startCol = 2;
+        int magnitude = 2;
         //create board
         Board board = new Board();
         //get square for pawn
-        Square square = board.getSquare(1,2);
+        Square square = board.getSquare(startRow,startCol);
         //get pawn from square
         IPiece piece = square.getPiece();
         Assert.assertTrue(piece instanceof Pawn);
         List<ValidMove> pawnMoves = piece.getValidMoves();
-        ValidMove forward_2 = null;
+        ValidMove forward = null;
         //find valid move that we are looking for
         for(ValidMove move: pawnMoves){
-            if(move.getMagnitude() == 2 && move.getMove().equals(Moves.FORWARD)){
-                forward_2 = move;
+            if(move.getMagnitude() == magnitude && move.getMove().equals(Moves.FORWARD)){
+                forward = move;
                 break;
             }
         }
-        Assert.assertNotNull(forward_2);
+        Assert.assertNotNull(forward);
         //find next square we can move to based on move
-        Square nextSquare = MoveValidator.determineNextSquare(square,forward_2,board);
+        Square nextSquare = MoveValidator.determineNextSquare(square,forward,board);
         //validate square is what we want
-        Assert.assertEquals(3, nextSquare.getRow());
-        Assert.assertEquals(2, nextSquare.getCol());
+        Assert.assertEquals(startRow+magnitude, nextSquare.getRow());
+        Assert.assertEquals(startCol, nextSquare.getCol());
+        //assign new position for piece
+        piece.setCurrentPosition(nextSquare);
+        //validate the old square does not know about piece
+        Assert.assertNull(square.getPiece());
+        Assert.assertFalse(square.isOccupied());
+        //validate next square knows about piece
+        Assert.assertEquals(piece, nextSquare.getPiece());
+        Assert.assertTrue(nextSquare.equals(piece.getCurrentPosition()));
+        Assert.assertTrue(nextSquare.isOccupied());
+    }
+
+    /**
+     * Test moving a rook when the next square is
+     * gathered based on the next square algorithm.
+     * Simulates a rook moving one square forward.
+     */
+    @Test
+    public void moveRookViaValidMoveSingleForward(){
+        int startRow = 0;
+        int startCol = 0;
+        int magnitude = 1;
+        //create board
+        Board board = new Board();
+        //remove all pawns
+        removeAllPawns(board);
+        //get square for rook
+        Square square = board.getSquare(startRow,startCol);
+        //get rook from square
+        IPiece piece = square.getPiece();
+        Assert.assertTrue(piece instanceof Rook);
+        List<ValidMove> rookMoves = piece.getValidMoves();
+        ValidMove forward = null;
+        //find valid move that we are looking for
+        for(ValidMove move: rookMoves){
+            if(move.getMagnitude() == magnitude && move.getMove().equals(Moves.FORWARD)){
+                forward = move;
+                break;
+            }
+        }
+        Assert.assertNotNull(forward);
+        //find next square we can move to based on move
+        Square nextSquare = MoveValidator.determineNextSquare(square,forward,board);
+        //validate square is what we want
+        Assert.assertEquals(startRow+magnitude, nextSquare.getRow());
+        Assert.assertEquals(startCol, nextSquare.getCol());
+        //assign new position for piece
+        piece.setCurrentPosition(nextSquare);
+        //validate the old square does not know about piece
+        Assert.assertNull(square.getPiece());
+        Assert.assertFalse(square.isOccupied());
+        //validate next square knows about piece
+        Assert.assertEquals(piece, nextSquare.getPiece());
+        Assert.assertTrue(nextSquare.equals(piece.getCurrentPosition()));
+        Assert.assertTrue(nextSquare.isOccupied());
+    }
+
+    /**
+     * Test moving a rook when the next square is
+     * gathered based on the next square algorithm.
+     * Simulates a rook moving two squares forward.
+     */
+    @Test
+    public void moveRookViaValidMoveDoubleForward(){
+        int startRow = 0;
+        int startCol = 0;
+        int magnitude = 2;
+        //create board
+        Board board = new Board();
+        //remove all pawns
+        removeAllPawns(board);
+        //get square for rook
+        Square square = board.getSquare(startRow,startCol);
+        //get rook from square
+        IPiece piece = square.getPiece();
+        Assert.assertTrue(piece instanceof Rook);
+        List<ValidMove> rookMoves = piece.getValidMoves();
+        ValidMove forward = null;
+        //find valid move that we are looking for
+        for(ValidMove move: rookMoves){
+            if(move.getMagnitude() == magnitude && move.getMove().equals(Moves.FORWARD)){
+                forward = move;
+                break;
+            }
+        }
+        Assert.assertNotNull(forward);
+        //find next square we can move to based on move
+        Square nextSquare = MoveValidator.determineNextSquare(square,forward,board);
+        //validate square is what we want
+        Assert.assertEquals(startRow+magnitude, nextSquare.getRow());
+        Assert.assertEquals(startCol, nextSquare.getCol());
         //assign new position for piece
         piece.setCurrentPosition(nextSquare);
         //validate the old square does not know about piece

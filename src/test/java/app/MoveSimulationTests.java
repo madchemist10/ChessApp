@@ -16,6 +16,23 @@ import java.util.List;
 public class MoveSimulationTests {
 
     /**
+     * Helper routine to remove all pawns from play.
+     * @param board that should have pawns removed.
+     */
+    private static void removeAllPawns(Board board){
+        int row;
+        Square square;
+        for(int col = 0; col < 8; col++){
+            row = 1;
+            square = board.getSquare(row, col);
+            square.setPiece(null);
+            row = 6;
+            square = board.getSquare(row, col);
+            square.setPiece(null);
+        }
+    }
+
+    /**
      * Validate that a pawn moving forward
      * by one square is possible and that
      * the pawn is able to know about

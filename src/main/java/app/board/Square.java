@@ -29,6 +29,10 @@ public class Square {
         return 0;
     }
 
+    public void setPiece(IPiece piece){
+
+    }
+
     public IPiece getPiece(){
         return null;
     }

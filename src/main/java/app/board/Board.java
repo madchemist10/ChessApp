@@ -1,5 +1,9 @@
 package app.board;
 
+import app.Color;
+import app.PieceType;
+import app.piece.*;
+
 /**
  * This class represents a chess board.
  * This board contains 64 squares and maintains
@@ -15,7 +19,7 @@ public class Board {
 	/** This array contains every square of the board, indexed by x and y axes,
 	 *  where the origin (squares[0][0]) is the white queenside rook's square.
 	 */
-	private Square[7][7] squares;
+	private Square[][] squares;
 	
 	/** These flags are true if the respective castle move is allowed, and must
 	 *  be altered if any castle rights are lost in the course of a game.
@@ -28,8 +32,8 @@ public class Board {
 	/** These flags are true if the respective king is currently in check. 
 	 * (This is potentially unneeded, value could be checked on the fly)
 	 */
-	private whiteCheck;
-	private blackCheck;
+	private Boolean whiteCheck;
+	private Boolean blackCheck;
 	
 	/** Move counter, incremented after either player makes a move */
 	private short moveCount;
@@ -49,14 +53,14 @@ public class Board {
 		blackCastleQueenside = true;
 		
 		// No moves made yet
-		moveCounter = 0;
+		moveCount = 0;
 		
 	}
 	
 	/** Helper function called by constructor to create the desired square
 	 *  and give it a piece if it needs one for the initial game state.
 	 */ 
-	private Square initSquare(x, y) {
+	private Square initSquare(int x, int y) {
 		Boolean occupied;
 		Color color;
 		PieceType type;
@@ -65,17 +69,17 @@ public class Board {
 		// to just create the square and return
 		switch (y) {
 		case 0: // White piece rank
-			color = WHITE;
+			color = Color.WHITE;
 			break;
 		case 1: // White pawn rank
-			return new Square(x, y, true, new Pawn(WHITE));
+			return new Square(x, y, true, new Pawn(Color.WHITE));
 		case 6: // Black pawn rank
-			return new Square(x, y, true, new Pawn(BLACK));
+			return new Square(x, y, true, new Pawn(Color.BLACK));
 		case 7: // Black piece rank
-			color = BLACK;
+			color = Color.BLACK;
 			break;
 		default:
-			return new Square(x, y, false, NULL);	
+			return new Square(x, y, false, null);
 		}
 		
 		// Back rank case, we need to determine what kind of piece this is
@@ -96,6 +100,6 @@ public class Board {
 		}
 
 		// Error case
-		return new Square(x, y, false, NULL);
+		return new Square(x, y, false, null);
 	}
 }

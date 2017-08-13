@@ -25,10 +25,7 @@ public class Rook extends APiece {
      * {@inheritDoc}
      */
     @Override
-    public List<ValidMove> getValidMoves() {
-        //List<Moves> availableMoves = MoveSets.Rook;
-        //return MoveValidator.getValidMoves(availableMoves, currentSquare, board);
-        //todo: implement Rook moveset
-        return null;
+    public List<Moves> getMoveSet() {
+        return MoveSets.ROOK;
     }
 }

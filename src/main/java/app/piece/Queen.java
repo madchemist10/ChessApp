@@ -27,10 +27,8 @@ public class Queen extends APiece {
      * {@inheritDoc}
      */
     @Override
-    public List<ValidMove> getValidMoves() {
-        //List<Moves> availableMoves = MoveSets.Queen;
-        //return MoveValidator.getValidMoves(availableMoves, currentSquare, board);
-        //todo: implement Queen moveset
-        return null;
+
+    public List<Moves> getMoveSet() {
+        return MoveSets.QUEEN;
     }
 }

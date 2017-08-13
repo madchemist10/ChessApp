@@ -11,12 +11,158 @@ import java.util.List;
  * is valid for the given piece and set of possible moves.
  */
 public class MoveValidator {
+    private static final int MAX_MAG = 8;
 
-    public static List<ValidMove> getValidMoves(List<Moves> moveSet, Square curr, Board board){
+    /**
+     * Routine to determine the list of valid moves,
+     * for the given move set and the current position.
+     * @param piece piece that we are determining valid moves for.
+     * @param board that maintains all piece placements.
+     * @return list of valid moves for the current piece.
+     */
+    public static List<ValidMove> getValidMoves(IPiece piece, Board board){
         List<ValidMove> validMoves = new ArrayList<>();
-        for(Moves move: moveSet){
-            //todo determine how to validate move set based on squares
+        ValidMove validMove;
+        Square next;
+        for(Moves move: piece.getMoveSet()){
+            for(int i = 0; i < MAX_MAG; i++ ) {
+                validMove = new ValidMove(move, i);
+                next = determineNextSquare(piece.getCurrentPosition(), validMove, board);
+                if(next == null || next.isOccupied()){
+                    break;
+                }
+                //next square is not occupied, store it
+                validMoves.add(validMove);
+            }
         }
         return validMoves;
     }
+
+    /**
+     * This routine is responsible for determining
+     * what the next square is that should be advanced to
+     * via the valid move that has been made.
+     * @param curr the square from which the move may be made from
+     * @param validMove the move that wants to be made
+     * @param board that maintains all piece placements
+     * @return the square for where the valid move points.
+     */
+    public static Square determineNextSquare(Square curr, ValidMove validMove, Board board){
+        Moves move = validMove.getMove();
+        int magnitude = validMove.getMagnitude();
+        int row = curr.getRow();
+        int col = curr.getCol();
+        /*
+         * FORWARD = row +
+         * BACKWARD = row -
+         * LEFT = col -
+         * RIGHT = col +
+         * DIAGONAL = row & col
+         * L = double second param
+         */
+        switch(move){
+            /*
+             * Handle normal vertical and
+             * horizontal based moves.
+             */
+            case FORWARD:
+                row+=magnitude;
+                break;
+            case BACKWARD:
+                row-=magnitude;
+                break;
+            case LEFT:
+                col-=magnitude;
+                break;
+            case RIGHT:
+                col+=magnitude;
+                break;
+            /*
+             * Handle all diagonal based
+             * moves.
+             */
+            case DIAGONAL_FORWARD_LEFT:
+                row+=magnitude;
+                col-=magnitude;
+                break;
+            case DIAGONAL_FORWARD_RIGHT:
+                row+=magnitude;
+                col+=magnitude;
+                break;
+            case DIAGONAL_BACKWARD_LEFT:
+                row-=magnitude;
+                col-=magnitude;
+                break;
+            case DIAGONAL_BACKWARD_RIGHT:
+                row-=magnitude;
+                col+=magnitude;
+                break;
+            /*
+             * Handle all Knight based
+             * moves.
+             */
+            case L_FORWARD_LEFT:
+                row++;
+                col-=2;
+                break;
+            case L_FORWARD_RIGHT:
+                row++;
+                col+=2;
+                break;
+            case L_BACKWARD_LEFT:
+                row--;
+                col-=2;
+                break;
+            case L_BACKWARD_RIGHT:
+                row--;
+                col+=2;
+                break;
+            case L_RIGHT_FORWARD:
+                col++;
+                row+=2;
+                break;
+            case L_RIGHT_BACKWARD:
+                col++;
+                row-=2;
+                break;
+            case L_LEFT_FORWARD:
+                col--;
+                row+=2;
+                break;
+            case L_LEFT_BACKWARD:
+                col--;
+                row-=2;
+                break;
+            /*
+             * Handle the special move cases that
+             * can have multiple options, depending on
+             * current set up of the board.
+             */
+            case CASTLE_RIGHT:
+            case CASTLE_LEFT:
+                return board.canCastle(curr, move);
+            case EN_PASSANT:
+                return board.canEnPassant(curr);
+        }
+        return board.getSquare(row, col);
+    }
+
+    /**
+     * Retrieve the move that is valid for the two
+     * squares that are linked via the desired move.
+     * @param dest square of where the player wants to put the piece.
+     * @param piece that is trying to be moved.
+     * @param board that maintains all pieces.
+     * @return the valid move for the move to the destination square
+     * or null.
+     */
+    public static ValidMove getValidMove(Square dest, IPiece piece, Board board){
+        for(ValidMove move: piece.getValidMoves()){
+            if(dest.equals(determineNextSquare(piece.getCurrentPosition(), move, board))){
+                return move;
+            }
+        }
+        return null;
+    }
+
 }

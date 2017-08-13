@@ -27,10 +27,7 @@ public class Knight extends APiece {
      * {@inheritDoc}
      */
     @Override
-    public List<ValidMove> getValidMoves() {
-        //List<Moves> availableMoves = MoveSets.Knight;
-        //return MoveValidator.getValidMoves(availableMoves, currentSquare, board);
-        //todo: implement Knight moveset
-        return null;
+    public List<Moves> getMoveSet() {
+        return MoveSets.KNIGHT;
     }
 }

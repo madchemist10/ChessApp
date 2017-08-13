@@ -25,8 +25,8 @@ public class Bishop extends APiece {
      * {@inheritDoc}
      */
     @Override
-    public List<ValidMove> getValidMoves() {
-        List<Moves> availableMoves = MoveSets.BISHOP;
-        return MoveValidator.getValidMoves(availableMoves, currentSquare, board);
+    public List<Moves> getMoveSet() {
+        return MoveSets.BISHOP;
     }
+
 }

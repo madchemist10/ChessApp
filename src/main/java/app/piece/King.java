@@ -24,10 +24,7 @@ public class King extends APiece {
      * {@inheritDoc}
      */
     @Override
-    public List<ValidMove> getValidMoves() {
-        //List<Moves> availableMoves = MoveSets.King;
-        //return MoveValidator.getValidMoves(availableMoves, currentSquare, board);
-        //todo: implement King moveset
-        return null;
+    public List<Moves> getMoveSet() {
+        return MoveSets.KING;
     }
 }

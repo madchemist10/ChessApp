@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class Pawn extends APiece {
 
+
     /**
      * Create a new Pawn with the specified color.
      * @param color of this Pawn
@@ -27,10 +28,7 @@ public class Pawn extends APiece {
      * {@inheritDoc}
      */
     @Override
-    public List<ValidMove> getValidMoves() {
-        //List<Moves> availableMoves = MoveSets.Pawn;
-        //return MoveValidator.getValidMoves(availableMoves, currentSquare, board);
-        //todo: implement Pawn moveset
-        return null;
+    public List<Moves> getMoveSet() {
+        return MoveSets.PAWN;
     }
 }

@@ -1,7 +1,7 @@
 package app.board;
 
-import app.piece.*;
-import app.PieceType;
+import app.piece.IPiece;
+
 /**
  * This represents a singular square that is
  * part of the master board. Each square understands
@@ -9,7 +9,7 @@ import app.PieceType;
  * it's color is. Each piece is aware of whether or not
  * another piece may take its location.
  */
-public class Square<P> {
+public class Square {
 
 	/**
 	 * x and y are the coordinates of the square on the board, where each
@@ -23,9 +23,9 @@ public class Square<P> {
 	Boolean occupied;
 	
 	/** A reference to the piece occupying this square. Undefined if not occupied. */
-	private P piece;
+	private IPiece piece;
 
-	Square(int x, int y, Boolean occupied, P piece) {
+	Square(int x, int y, Boolean occupied, IPiece piece) {
 		this.x = x;
 		this.y = y;
 		this.piece = piece;
@@ -38,14 +38,14 @@ public class Square<P> {
 		return false;
 	}
 	
-	public P getPiece() {
+	public IPiece getPiece() {
 		if (occupied) {
 			return piece;
 		}
 		return null;
 	}
 
-	public void setPiece(P piece) {
+	public void setPiece(IPiece piece) {
 		this.piece = piece;
 		occupied = true;
 	}
@@ -54,4 +54,13 @@ public class Square<P> {
 		piece = null;
 		occupied = false;
 	}
+
+	public int getRow() {
+		return x;
+	}
+
+	public int getCol() {
+		return y;
+	}
 }
+

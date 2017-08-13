@@ -48,4 +48,11 @@ public interface IPiece {
      * @param board that this piece is a member of.
      */
     void setBoard(Board board);
+
+    /**
+     * Get the move set for the implemented piece.
+     * Used in determining next valid move sets.
+     * @return the move set for this piece.
+     */
+    List<Moves> getMoveSet();
 }

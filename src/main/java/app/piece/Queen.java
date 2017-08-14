@@ -13,7 +13,7 @@ import java.util.List;
  * horizontal, or vertical as long as the destination
  * is within eye-sight of the current occupied square.
  */
-public class Queen extends APiece{
+public class Queen extends APiece {
 
     /**
      * Create a new Queen with the specified color.
@@ -27,6 +27,7 @@ public class Queen extends APiece{
      * {@inheritDoc}
      */
     @Override
+
     public List<Moves> getMoveSet() {
         return MoveSets.QUEEN;
     }

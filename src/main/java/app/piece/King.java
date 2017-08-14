@@ -10,11 +10,11 @@ import java.util.List;
  * move from the current tile to any tile that
  * is exactly one space away.
  */
-public class King extends APiece{
+public class King extends APiece {
 
     /**
-     * Create a new king with the specified color.
-     * @param color of this king
+     * Create a new King with the specified color.
+     * @param color of this King
      */
     public King(Color color){
         super(color);

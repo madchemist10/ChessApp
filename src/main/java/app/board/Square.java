@@ -11,29 +11,56 @@ import app.piece.IPiece;
  */
 public class Square {
 
-    public Square(int row, int col){
+	/**
+	 * x and y are the coordinates of the square on the board, where each
+	 * coordinate is in the range [0-7] and the origin square (x=0,y=0) is
+	 * the white queenside rook's square
+	 */
+	int x;
+	int y;
+	
+	/** Indicates whether the square is occupied */
+	Boolean occupied;
+	
+	/** A reference to the piece occupying this square. Undefined if not occupied. */
+	private IPiece piece;
 
-    }
+	Square(int x, int y, Boolean occupied, IPiece piece) {
+		this.x = x;
+		this.y = y;
+		this.piece = piece;
+	}
+	
+	public Boolean isOccupied() {
+		if (occupied) {
+			return true;
+		}
+		return false;
+	}
+	
+	public IPiece getPiece() {
+		if (occupied) {
+			return piece;
+		}
+		return null;
+	}
 
-    private boolean isOccupied = false;
+	public void setPiece(IPiece piece) {
+		this.piece = piece;
+		occupied = true;
+	}
 
-    public boolean isOccupied(){
-        return isOccupied;
-    }
+	public void removePiece() {
+		piece = null;
+		occupied = false;
+	}
 
-    public int getRow(){
-        return 0;
-    }
+	public int getRow() {
+		return x;
+	}
 
-    public int getCol(){
-        return 0;
-    }
-
-    public IPiece getPiece(){
-        return null;
-    }
-
-    public boolean equals(Square square){
-        return getRow() == square.getRow() && getCol() == square.getCol();
-    }
+	public int getCol() {
+		return y;
+	}
 }
+

@@ -10,10 +10,11 @@ import java.util.List;
  * only on the first move, to advance 2 squares
  * forward. All other pawn moves must be in 1 square
  * increments. Pawns capture opponent pieces by
- * attacking diagonal and forward from the current
+ * attacPawn diagonal and forward from the current
  * square.
  */
-public class Pawn extends APiece{
+public class Pawn extends APiece {
+
 
     /**
      * Create a new Pawn with the specified color.

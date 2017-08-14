@@ -11,7 +11,7 @@ import java.util.List;
  * that is within eye-sight of the current
  * occupied square.
  */
-public class Rook extends APiece{
+public class Rook extends APiece {
 
     /**
      * Create a new Rook with the specified color.

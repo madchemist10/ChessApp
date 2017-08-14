@@ -16,8 +16,8 @@ import java.util.List;
 public class Knight extends APiece {
 
     /**
-     * Create a new knight with the specified color.
-     * @param color of this knight
+     * Create a new Knight with the specified color.
+     * @param color of this Knight
      */
     public Knight(Color color){
         super(color);
